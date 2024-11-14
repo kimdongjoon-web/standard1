@@ -1,8 +1,8 @@
 package com.example.standard1.domain.member.controller;
 
-import com.example.standard1.domain.member.dto.request.MemberRequest;
+import com.example.standard1.domain.member.dto.request.MemberCreateRequest;
+import com.example.standard1.domain.member.dto.request.MemberUpdateRequest;
 import com.example.standard1.domain.member.dto.response.MemberResponse;
-import com.example.standard1.domain.member.repository.MemberRepository;
 import com.example.standard1.domain.member.service.MemberService;
 import com.example.standard1.global.response.ApiResponse;
 import jakarta.validation.Valid;
@@ -20,12 +20,11 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class MemberController {
 
-    private final MemberRepository memberRepository;
     private final MemberService memberService;
 
     // Create
     @PostMapping
-    public ResponseEntity<ApiResponse<MemberResponse>> create(@Valid @RequestBody MemberRequest request) {
+    public ResponseEntity<ApiResponse<MemberResponse>> create(@Valid @RequestBody MemberCreateRequest request) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success(memberService.create(request)));
     }
@@ -48,7 +47,7 @@ public class MemberController {
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<MemberResponse>> update(
             @PathVariable Long id,
-            @Valid @RequestBody MemberRequest request) {
+            @Valid @RequestBody MemberUpdateRequest request) {
         return ResponseEntity.ok(ApiResponse.success(memberService.update(id, request)));
     }
 
@@ -58,5 +57,4 @@ public class MemberController {
         memberService.delete(id);
         return ResponseEntity.ok(ApiResponse.success(null));
     }
-
 }
