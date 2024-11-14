@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MemberRequest {
+public class MemberCreateRequest {
 
     @NotBlank
     @Size(min = 1, max = 20)
