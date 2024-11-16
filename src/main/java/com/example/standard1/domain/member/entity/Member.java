@@ -1,5 +1,7 @@
 package com.example.standard1.domain.member.entity;
 
+import com.example.standard1.domain.member.dto.request.MemberCreateRequest;
+import com.example.standard1.domain.member.dto.request.MemberUpdateRequest;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -11,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "members")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -33,7 +36,7 @@ public class Member {
     private Role role = Role.USER;
 
     @Builder
-    public Member(String loginId, String password, String name, String phone, String email) {
+    private Member(String loginId, String password, String name, String phone, String email) {
         this.loginId = loginId;
         this.password = password;
         this.name = name;
@@ -41,7 +44,17 @@ public class Member {
         this.email = email;
     }
 
-    public void update(String name, String phone, String email) {
+    public static Member createMember(MemberCreateRequest request) {
+        return Member.builder()
+                .loginId(request.getLoginId())
+                .password(request.getPassword())
+                .name(request.getName())
+                .phone(request.getPhone())
+                .email(request.getEmail())
+                .build();
+    }
+
+    public void update(MemberUpdateRequest request) {
         this.name = name;
         this.phone = phone;
         this.email = email;
