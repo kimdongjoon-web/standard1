@@ -11,7 +11,6 @@ import com.example.standard1.global.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,10 +27,9 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserResponse create(UserCreateRequest request) {
         userValidator.validateCreateUser(request);
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         User user = User.builder()
                 .email(request.getEmail())
-                .password(encoder.encode(request.getPassword()))
+                .password(request.getPassword())
                 .name(request.getName())
                 .phone(request.getPhone())
                 .build();
@@ -73,10 +71,5 @@ public class UserServiceImpl implements UserService {
     public User findById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new BaseException(ErrorCode.MEMBER_NOT_FOUND));
-    }
-
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email)
-                .orElseThrow(() -> new IllegalArgumentException("Unexpected user"));
     }
 }

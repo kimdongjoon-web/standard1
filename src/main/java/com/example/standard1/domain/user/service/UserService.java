@@ -12,8 +12,6 @@ public interface UserService {
     UserResponse create(UserCreateRequest request);
     UserResponse getById(Long id);
     Page<UserResponse> getList(Pageable pageable);
-    User findById(Long id);
-    User findByEmail(String email);
     UserResponse update(Long id, UserUpdateRequest request);
     void delete(Long id);
 }
