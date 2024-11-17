@@ -1,4 +1,4 @@
-package com.example.standard1.domain.member.dto.request;
+package com.example.standard1.domain.user.dto.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -9,23 +9,19 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MemberCreateRequest {
+public class UserCreateRequest {
 
     @NotBlank
-    @Size(min = 1, max = 20)
-    private String loginId;
+    @Email
+    private String email;
+
+    @NotBlank
+    private String name;
 
     @NotBlank
     @Size(min = 1, max = 20)
     private String password;
 
     @NotBlank
-    private String name;
-
-    @NotBlank
     private String phone;
-
-    @NotBlank
-    @Email
-    private String email;
 }
