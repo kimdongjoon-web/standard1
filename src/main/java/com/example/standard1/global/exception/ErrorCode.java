@@ -13,7 +13,10 @@ public enum ErrorCode {
     EMAIL_ALREADY_EXISTS(HttpStatus.CONFLICT, "Email already exists"),
     PHONE_ALREADY_EXISTS(HttpStatus.CONFLICT, "Phone already exists"),
     ACCESS_DENIED(HttpStatus.FORBIDDEN, "Access denied"),
-    INVALID_INPUT(HttpStatus.BAD_REQUEST, "Invalid input");
+    INVALID_INPUT(HttpStatus.BAD_REQUEST, "Invalid input"),
+
+    // Article
+    ARTICLE_NOT_FOUND(HttpStatus.NOT_FOUND, "Article not found");
 
     private final HttpStatus httpStatus;
     private final String message;
