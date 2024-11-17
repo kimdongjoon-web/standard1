@@ -34,6 +34,8 @@ public class ExampleController {
 }
 ```
 
+---
+
 ### 동작 과정
 1. **컨트롤러 로직**
     - `ExampleController` 클래스에서 `@GetMapping`으로 `/thymeleaf/example` URL을 처리한다.
