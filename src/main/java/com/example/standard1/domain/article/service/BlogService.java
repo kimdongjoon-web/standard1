@@ -2,9 +2,11 @@ package com.example.standard1.domain.article.service;
 
 import com.example.standard1.domain.article.domain.Article;
 import com.example.standard1.domain.article.dto.request.AddArticleRequest;
+import com.example.standard1.domain.article.dto.request.UpdateArticleRequest;
 import com.example.standard1.domain.article.repository.BlogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,10 +23,30 @@ public class BlogService {
 
     // 블로그 글 추가 메서드
     public Article save(AddArticleRequest request) {
-        return blogRepository.save(request.toEntity());
+        return blogRepository.save(request.toEntity()); // JpaRepository에서 지원하는 저장 메서드 save()
     }
 
     public List<Article> findAll() {
-        return blogRepository.findAll();
+        return blogRepository.findAll(); // findAll() : JPA 지원 메서드
+    }
+
+    public Article findById(long id) {
+        return blogRepository.findById(id) // finById() : JPA 지원 메서드
+//                .orElseThrow(() -> new BaseException(ErrorCode.ARTICLE_NOT_FOUND));
+                // 가장 기본적인 예외 던지기 케이스
+                .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
+    }
+
+    public void delete(long id) {
+        blogRepository.deleteById(id); // deleteById() : JPA 지원 메서드
+    }
+
+    @Transactional // 트랜잭션 메서드
+    public Article update(long id, UpdateArticleRequest request) {
+        Article article = blogRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
+
+        article.update(request.getTitle(), request.getContent());
+        return article;
     }
 }
