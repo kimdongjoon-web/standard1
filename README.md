@@ -206,3 +206,53 @@ http://localhost:8080/thymeleaf/example
 이 코드를 서버와 함께 실행하면, 서버에서 `person`과 `today` 변수에 데이터를 전달하여 동적인 HTML 페이지를 생성한다.
 </details>
 </details>
+
+<details>
+<summary>REST API</summary>
+
+## REST API
+API(Application Programming Interface, 애플리케이션 프로그래밍 인터페이스)는 컴퓨터나 컴퓨터 프로그램 사이의 연결이다. 
+일종의 소프트웨어 인터페이스이며 다른 종류의 소프트웨어에 서비스를 제공한다.
+
+REST(Representational State Transfer)는 자원을 이름으로 구분해 자원의 상태를 주고받는 방식이다.
+
+구체적인 개념 : HTTP URI(Uniform Resource Idenfier)를 통해 자원(Resource)을 명시하고, HTTP Method(POST, GET, PUT, DELETE)로 해당 자원에 대한 CRUD Operation을 적용하는 것을 의미한다.
+
+즉, REST는 자원 기반 구조(ROA, Resource Oriented Architecture) 설계의 중심에 Resource가 있고 HTTP Method를 통해 Resource를 처리하도록 설계된 아키텍처를 의미한다. 웹 사이트의 이미지, 텍스트, DB 내용 등의 모든 자원에 고유한 ID인 HTTP URI를 부여한다.
+
+REST API : REST 기반으로 서비스 API를 구현한 것
+
+### HTTP Response Code
+
+>200 OK : 요청이 성공적으로 수행되었음</br>
+> 201 Created : 요청이 성공적으로 수행되었고, 새로운 리소스가 생성되었음</br>
+> 400 Bad Request : 요청 값이 잘못되어 요청에 실패했음</br>
+> 403 Forbidden : 권한이 없어 요청에 실패했음</br>
+> 404 Not Found : 요청 값으로 찾은 리소스가 없어 요청에 실패했음</br>
+> 500 Internal Server Error : 서버 상에 문제가 있어 요청에 실패했음</br>
+
+### API 구현
+
+![API구현 drawio](https://github.com/user-attachments/assets/f339ff7f-cd68-477f-8360-8b059594929a)
+
+</details>
+
+<details>
+<summary>Repository</summary>
+
+### BlogRepository의 구성
+
+![blogRepository구성 drawio](https://github.com/user-attachments/assets/0654bfb4-63c0-4eda-8236-2f658c57c3e4)
+
+</details>
+
+<details>
+<summary>Serialization</summary>
+
+### Serialization (직렬화)
+
+![Serialization drawio](https://github.com/user-attachments/assets/e3ddf255-2f3e-4cd9-95fa-74ba4f7eaba9)
+
+@RestController : HTTP Response Body에 객체 데이터를 JSON 형식으로 반환하는 컨트롤러
+
+</details>

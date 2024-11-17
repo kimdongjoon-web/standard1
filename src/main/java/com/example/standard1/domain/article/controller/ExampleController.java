@@ -1,4 +1,4 @@
-package com.example.standard1.domain.user.controller;
+package com.example.standard1.domain.article.controller;
 
 import lombok.Getter;
 import lombok.Setter;
