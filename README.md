@@ -242,7 +242,7 @@ REST API : REST 기반으로 서비스 API를 구현한 것
 
 ### BlogRepository의 구성
 
-![blogRepository구성 drawio](https://github.com/user-attachments/assets/c99858f4-668d-4c78-bf02-f9deba4dea73)
+![blogRepository구성 drawio](https://github.com/user-attachments/assets/0654bfb4-63c0-4eda-8236-2f658c57c3e4)
 
 </details>
 
@@ -251,7 +251,7 @@ REST API : REST 기반으로 서비스 API를 구현한 것
 
 ### Serialization (직렬화)
 
-![Serialization drawio](https://github.com/user-attachments/assets/14c8768e-795c-4534-a4ad-8f148ca55eac)
+![Serialization drawio](https://github.com/user-attachments/assets/e3ddf255-2f3e-4cd9-95fa-74ba4f7eaba9)
 
 @RestController : HTTP Response Body에 객체 데이터를 JSON 형식으로 반환하는 컨트롤러
 
